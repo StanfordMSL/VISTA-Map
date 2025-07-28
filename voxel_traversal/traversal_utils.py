@@ -68,7 +68,10 @@ class VoxelGrid:
         
         self.cell_sizes = (self.upper_bound - self.lower_bound) / self.discretizations
 
-        grid_pts = torch.meshgrid([torch.linspace(self.lower_bound[i], self.upper_bound[i], self.discretizations[i]+1, device=self.device) for i in range(self.ndim)])
+        grid_pts = torch.meshgrid(
+            [torch.linspace(self.lower_bound[i], self.upper_bound[i], self.discretizations[i]+1, device=self.device) for i in range(self.ndim)], 
+            indexing='ij'
+        )
         self.grid_vertices = torch.stack(grid_pts, dim=-1)      # n1 x n2 x n3 x 3
 
         if self.ndim == 2:

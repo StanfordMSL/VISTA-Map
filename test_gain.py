@@ -40,7 +40,8 @@ points = np.asarray(mesh.vertices)
 
 # Define params
 bounding_box = mesh.get_axis_aligned_bounding_box()
-cmap = matplotlib.cm.get_cmap('turbo')
+# cmap = matplotlib.cm.get_cmap('turbo')'
+cmap = matplotlib.colormaps['turbo']
 
 K = torch.tensor([
     [100., 0., 100.],
@@ -131,7 +132,9 @@ print("Time taken: ", time.time() - tnow)
 
 # Concatenate information gain image with depth image
 combined_images_list = []
-cmap = matplotlib.cm.get_cmap('turbo')
+cmap = matplotlib.colormaps['turbo']
+
+# cmap = matplotlib.cm.get_cmap('turbo')
 for i, (img, dep) in enumerate(zip(image, depth)):
     dep = dep / far_clip
     img = img[..., -1]

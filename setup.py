@@ -7,5 +7,10 @@ setup(
     author="Timothy Chen",
     author_email="chengine@stanford.edu",
     description="GPU-based voxel ray traversal in Pytorch",
-    packages=find_packages()
+    packages=find_packages(),
+    install_requires=[
+        'open3d == 0.18.0',
+        'tensordict == 0.3.0',
+        'matplotlib'
+    ]
 )

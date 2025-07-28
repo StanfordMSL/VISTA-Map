@@ -12,7 +12,7 @@ def get_rays(H, W, K, c2w, device):
         rays_o: [H, W, 3]. Ray origins.
         rays_d: [H, W, 3]. Ray directions.
     """
-    i, j = torch.meshgrid(torch.linspace(0, W-1, W, device=device), torch.linspace(0, H-1, H, device=device))  # pytorch's meshgrid has indexing='ij'
+    i, j = torch.meshgrid(torch.linspace(0, W-1, W, device=device), torch.linspace(0, H-1, H, device=device), indexing='ij')  # pytorch's meshgrid has indexing='ij'
     i = i.t()
     j = j.t()
     dirs = torch.stack([(i-K[0][2])/K[0][0], -(j-K[1][2])/K[1][1], -torch.ones_like(i)], -1)
@@ -25,7 +25,7 @@ def get_rays(H, W, K, c2w, device):
 
 def get_rays_batch(H, W, K, c2w, device):
     """Just like get_rays, but for a batch of poses"""
-    i, j = torch.meshgrid(torch.linspace(0, W-1, W, device=device), torch.linspace(0, H-1, H, device=device))  # pytorch's meshgrid has indexing='ij'
+    i, j = torch.meshgrid(torch.linspace(0, W-1, W, device=device), torch.linspace(0, H-1, H, device=device), indexing='ij')  # pytorch's meshgrid has indexing='ij'
     i = i.t()
     j = j.t()
     dirs = torch.stack([(i-K[0][2])/K[0][0], -(j-K[1][2])/K[1][1], -torch.ones_like(i)], -1)
