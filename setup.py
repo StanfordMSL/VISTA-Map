@@ -2,7 +2,7 @@
 from setuptools import setup, find_packages
 
 setup(
-    name="vista",
+    name="vista_map",
     version="0.1.0",
     author="Timothy Chen",
     author_email="chengine@stanford.edu",
